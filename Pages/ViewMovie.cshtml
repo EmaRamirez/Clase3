@@ -1,0 +1,27 @@
+﻿@page
+@model MyApp.Namespace.ViewMovieModel
+@{
+}
+
+<h3>@Model.MovieDetails.Name</h3>
+<div>
+    <span>Duracion:</span>
+    <span>@Model.MovieDetails.Minutos</span>
+    <span>minutos.</span>
+</div>
+<div>
+    <span>Categoria</span>
+    <span>@Model.MovieDetails.Categoria</span>
+</div>
+@if (!string.IsNullOrEmpty(Model.MovieDetails.review))
+{
+    <div>
+        <span>Review</span>
+        <span>@Model.MovieDetails.review</span>
+    </div>
+}
+
+<form method="post" asp-page-handler="delete" asp-route-code="@Model.MovieDetails.Code"
+    onsubmit="return confirm('Estas seguro que quieres eliminar la pelicula');">
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
